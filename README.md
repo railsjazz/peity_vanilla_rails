@@ -6,13 +6,19 @@ Sparklines are small but intense charts. This gem is a wrapper around [peity_van
 
 ## Usage
 
-1. Add to `application.js`
+1. add gem to `Gemfile`
+
+```ruby
+gem "peity_vanilla_rails"
+```
+
+2. Add to `application.js`
 
 ```javascript
 //= require peity_vanilla.js
 ```
 
-2. Add charts in your code:
+3. Add charts in your code:
 
 ```erb
 <h3>Line</h3>
@@ -34,18 +40,6 @@ Sparklines are small but intense charts. This gem is a wrapper around [peity_van
 <%= peity_donut_chart "2/3" %>
 <%= peity_donut_chart [6,20] %>
 <%= peity_donut_chart [236,300] %>
-```
-
-## Installation
-Add this line to your application's Gemfile:
-
-```ruby
-gem "peity_vanilla_rails"
-```
-
-And then execute:
-```bash
-$ bundle
 ```
 
 ## More Examples
