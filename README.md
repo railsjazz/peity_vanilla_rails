@@ -6,7 +6,7 @@ Sparklines are small but intense charts. This gem is a wrapper around [peity_van
 
 ## Usage
 
-1. add gem to `Gemfile`
+1. add gem to the `Gemfile`
 
 ```ruby
 gem "peity_vanilla_rails"
