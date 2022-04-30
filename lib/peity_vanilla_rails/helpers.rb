@@ -26,7 +26,23 @@ module PeityVanillaRails
         end,
         tag.script do
           %Q{
-            peity(document.getElementById("#{id}"), "#{type}");
+            function init_peity_charts_#{id}() {
+              var element = document.getElementById("#{id}");
+
+              if (!element) {
+                return;
+              }
+
+              if(element.getAttribute("data-_peity")) {
+                return;
+              }
+
+              window.peity(element, "#{type}");
+            }
+
+            window.addEventListener('load', init_peity_charts_#{id});
+            window.addEventListener('turbo:load', init_peity_charts_#{id});
+            window.addEventListener('turbolinks:load', init_peity_charts_#{id});
           }.html_safe
         end
       ].join.html_safe
