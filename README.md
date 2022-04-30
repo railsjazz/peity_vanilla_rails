@@ -48,11 +48,32 @@ And then execute:
 $ bundle
 ```
 
-## More Example
+## More Examples
+
+Check the [original](https://github.com/railsjazz/peity_vanilla) page.
 
 <img src="https://github.com/railsjazz/peity_vanilla/raw/main/docs/color.png"/>
 <img src="https://github.com/railsjazz/peity_vanilla/raw/main/docs/custom.png"/>
 <img src="https://github.com/railsjazz/peity_vanilla/raw/main/docs/animation.gif"/>
+
+```html
+<span class="updating-chart">5,3,9,6,5,9,7,3,5,2,5,3,9,6,5,9,7,3,5,2</span>
+
+<script>
+  var updatingChart = peity(document.getElementById("updating-chart"), "line", { width: 64 });
+  
+  setInterval(function() {
+    var random = Math.round(Math.random() * 10)
+    // debugger
+    var values = updatingChart.innerText.split(",")
+    values.shift()
+    values.push(random)
+
+    updatingChart.innerText = values.join(",")
+    updatingChart.dispatchEvent(new Event('change'))
+  }, 1000);
+</script>
+```
 
 ## Default Options
 
