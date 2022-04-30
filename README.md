@@ -2,7 +2,7 @@
 
 Sparklines are small but intense charts. This gem is a wrapper around [peity_vanilla](https://github.com/railsjazz/peity_vanilla) library. You can generate simple but informative charts with vanilla JS.
 
-![Sparklines Rails](docs/sparklines.png)
+<img src="./docs/sparklines.png" height="400px"/>
 
 ## Usage
 
@@ -14,7 +14,7 @@ Sparklines are small but intense charts. This gem is a wrapper around [peity_van
 
 2. Add charts in your code:
 
-```ruby
+```erb
 <h3>Line</h3>
 <%= peity_line_chart([115,123,234,-113,-43,-223,127,332,152,233]) %>
 <%= peity_line_chart(100.times.map{rand(100) * [1,-1].sample}, options: { width: 240, fill: 'lightgreen', stroke: 'blue' }) %>
