@@ -117,8 +117,15 @@ You can pass in `options` any of the attributes.
 </script>
 ```
 
+## TODO
+
+- stimulus, turbo, etc.
+- remote datasource and autoupdate
+
 ## Contributing
-Contribution directions go here.
+
+You are welcome to contribute.
 
 ## License
+
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
