@@ -48,6 +48,12 @@ And then execute:
 $ bundle
 ```
 
+## More Example
+
+<img src="https://github.com/railsjazz/peity_vanilla/raw/main/docs/color.png"/>
+<img src="https://github.com/railsjazz/peity_vanilla/raw/main/docs/custom.png"/>
+<img src="https://github.com/railsjazz/peity_vanilla/raw/main/docs/animation.gif"/>
+
 ## Default Options
 
 More information here: https://github.com/railsjazz/peity_vanilla.
