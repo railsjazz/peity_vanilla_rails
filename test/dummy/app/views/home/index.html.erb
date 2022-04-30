@@ -1,0 +1,24 @@
+<h1>Sparklines</h1>
+
+<h3>Line</h3>
+<%= peity_line_chart([115,123,234,-113,-43,-223,127,332,152,233]) %>
+<br>
+<%= peity_line_chart(100.times.map{rand(100) * [1,-1].sample}, options: { width: 240, fill: 'lightgreen', stroke: 'blue' }) %>
+
+<h3>Bar</h3>
+<%= peity_bar_chart([115,123,234,-113,-43,-223,127,332,152,233]) %>
+<br>
+<%= peity_bar_chart('115,123,234,-132,152,233') %>
+<br>
+<%= peity_bar_chart(50.times.map{rand(100) }, options: { width: 240, fill: ['orange'], height: 30, padding: -0.1 }) %>
+
+<h3>Pie</h3>
+<%= peity_pie_chart "2/3" %>
+<%= peity_pie_chart [3,10] %>
+<%= peity_pie_chart [3,10], options: { fill: ["red", "#eeeeee"], radius: 20 } %>
+<%= peity_pie_chart [236,300] %>
+
+<h3>Donut</h3>
+<%= peity_donut_chart "2/3" %>
+<%= peity_donut_chart [6,20] %>
+<%= peity_donut_chart [236,300] %>

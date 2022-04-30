@@ -1,0 +1,1 @@
+//= require peity_vanilla.js
