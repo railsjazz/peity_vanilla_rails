@@ -14,8 +14,24 @@ gem "peity_vanilla_rails"
 
 2. Add to `application.js`
 
+For Assets Pipeline:
+
 ```javascript
 //= require peity_vanilla.js
+```
+
+For Importmaps
+
+In `application.js`
+
+```js
+import "peity_vanilla"
+```
+
+In `importmap.rb`
+
+```ruby
+pin "peity_vanilla", to: "peity_vanilla.js", preload: true
 ```
 
 3. Add charts in your code:
