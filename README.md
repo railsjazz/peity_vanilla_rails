@@ -1,5 +1,7 @@
 # Peity Vanilla Rails
 
+[![RailsJazz](https://github.com/igorkasyanchuk/rails_time_travel/blob/main/docs/my_other.svg?raw=true)](https://www.railsjazz.com)
+
 Sparklines are small but intense charts. This gem is a wrapper around [peity_vanilla](https://github.com/railsjazz/peity_vanilla) library. You can generate simple but informative charts with vanilla JS.
 
 <img src="./docs/sparklines.png" height="400px"/>
