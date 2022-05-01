@@ -1,5 +1,7 @@
 # Peity Vanilla Rails
 
+[![RailsJazz](https://github.com/igorkasyanchuk/rails_time_travel/blob/main/docs/my_other.svg?raw=true)](https://www.railsjazz.com)
+
 Sparklines are small but intense charts. This gem is a wrapper around [peity_vanilla](https://github.com/railsjazz/peity_vanilla) library. You can generate simple but informative charts with vanilla JS.
 
 <img src="./docs/sparklines.png" height="400px"/>
@@ -14,8 +16,20 @@ gem "peity_vanilla_rails"
 
 2. Add to `application.js`
 
+### For Assets Pipeline:
+
 ```javascript
 //= require peity_vanilla.js
+```
+
+### For Importmaps
+
+In `application.js`
+
+```js
+import peity from "peity";
+
+window.peity = peity;
 ```
 
 3. Add charts in your code:
@@ -58,13 +72,12 @@ Check the [original](https://github.com/railsjazz/peity_vanilla) page.
   
   setInterval(function() {
     var random = Math.round(Math.random() * 10)
-    // debugger
-    var values = updatingChart.innerText.split(",")
+    var values = updatingChart.element.innerText.split(",")
     values.shift()
     values.push(random)
 
-    updatingChart.innerText = values.join(",")
-    updatingChart.dispatchEvent(new Event('change'))
+    updatingChart.element.innerText = values.join(",")
+    updatingChart.element.dispatchEvent(new Event('change'))
   }, 1000);
 </script>
 ```
