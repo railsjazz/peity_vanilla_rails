@@ -3,8 +3,8 @@ require_relative "lib/peity_vanilla_rails/version"
 Gem::Specification.new do |spec|
   spec.name        = "peity_vanilla_rails"
   spec.version     = PeityVanillaRails::VERSION
-  spec.authors     = ["Igor Kasyanchuk"]
-  spec.email       = ["igorkasyanchuk@gmail.com"]
+  spec.authors     = ["Igor Kasyanchuk", "Liubomyr Manastyretskyi"]
+  spec.email       = ["igorkasyanchuk@gmail.com", "manastyretskyi@gmail.com"]
   spec.homepage    = "https://github.com/railsjazz/peity_vanilla_rails"
   spec.summary     = "Sparklines are small but intense charts."
   spec.description = "Sparklines are small but intense charts."
