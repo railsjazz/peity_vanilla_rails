@@ -16,24 +16,20 @@ gem "peity_vanilla_rails"
 
 2. Add to `application.js`
 
-For Assets Pipeline:
+### For Assets Pipeline:
 
 ```javascript
 //= require peity_vanilla.js
 ```
 
-For Importmaps
+### For Importmaps
 
 In `application.js`
 
 ```js
-import "peity_vanilla"
-```
+import peity from "peity";
 
-In `importmap.rb`
-
-```ruby
-pin "peity_vanilla", to: "peity_vanilla.js", preload: true
+window.peity = peity;
 ```
 
 3. Add charts in your code:
@@ -76,13 +72,12 @@ Check the [original](https://github.com/railsjazz/peity_vanilla) page.
   
   setInterval(function() {
     var random = Math.round(Math.random() * 10)
-    // debugger
-    var values = updatingChart.innerText.split(",")
+    var values = updatingChart.element.innerText.split(",")
     values.shift()
     values.push(random)
 
-    updatingChart.innerText = values.join(",")
-    updatingChart.dispatchEvent(new Event('change'))
+    updatingChart.element.innerText = values.join(",")
+    updatingChart.element.dispatchEvent(new Event('change'))
   }, 1000);
 </script>
 ```
