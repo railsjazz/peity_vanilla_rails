@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    peity_vanilla_rails (0.1.2)
+    peity_vanilla_rails (0.2.0)
       rails
 
 GEM
