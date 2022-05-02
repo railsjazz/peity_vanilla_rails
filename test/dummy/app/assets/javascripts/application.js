@@ -1,1 +1,1 @@
-//= require peity_vanilla.js
+//= require peity-vanilla-rails.min.js

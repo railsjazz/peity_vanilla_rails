@@ -9,4 +9,7 @@
 /test/dummy/storage/
 /test/dummy/tmp/
 
+javascript/yarn.lock
+javascript/node_modules
+
 *.gem

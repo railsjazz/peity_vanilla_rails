@@ -2,6 +2,20 @@
 
 <h3>Line</h3>
 <%= peity_line_chart([115,123,234,-113,-43,-223,127,332,152,233]) %>
+<%= peity_line_chart([5,3,9,6,5,9,7,3,5,2,5,3,9,6,5,9,7,3,5,2], id: 'updating-chart') %>
+
+<script>
+  var updatingChart = document.getElementById("updating-chart");
+  
+  setInterval(function() {
+    var random = Math.round(Math.random() * 10)
+    var values = updatingChart.innerText.split(",")
+    values.shift()
+    values.push(random)
+
+    updatingChart.innerText = values.join(",")
+  }, 1000);
+</script>
 <br>
 <%= peity_line_chart(100.times.map{rand(100) * [1,-1].sample}, options: { width: 240, fill: 'lightgreen', stroke: 'blue' }) %>
 

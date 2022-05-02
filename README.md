@@ -2,7 +2,7 @@
 
 [![RailsJazz](https://github.com/igorkasyanchuk/rails_time_travel/blob/main/docs/my_other.svg?raw=true)](https://www.railsjazz.com)
 
-Sparklines are small but intense charts. This gem is a wrapper around [peity_vanilla](https://github.com/railsjazz/peity_vanilla) library. You can generate simple but informative charts with vanilla JS.
+Sparklines are small but intense charts. This gem is a wrapper around [peity-vanilla](https://github.com/railsjazz/peity_vanilla) library. You can generate simple but informative charts with vanilla JS.
 
 <img src="./docs/sparklines.png" height="400px"/>
 
@@ -19,7 +19,7 @@ gem "peity_vanilla_rails"
 ### For Assets Pipeline:
 
 ```javascript
-//= require peity_vanilla.js
+//= require peity-vanilla-rails.js
 ```
 
 ### For Importmaps
@@ -27,10 +27,11 @@ gem "peity_vanilla_rails"
 In `application.js`
 
 ```js
-import peity from "peity";
-
-window.peity = peity;
+import "peity-vanilla-rails";
 ```
+
+#### Note: After `peity-vanilla-rails.js` is imported, it will listen to changes of `peity` and `data-peity` attributes of every DOM element
+Pure `peity-vanilla` library is also acessible via `peity-vanilla.js` for Assets Pipeline, and `import peity from "peity-vanilla"` for Importmaps
 
 3. Add charts in your code:
 
@@ -64,20 +65,19 @@ Check the [original](https://github.com/railsjazz/peity_vanilla) page.
 <img src="https://github.com/railsjazz/peity_vanilla/raw/main/docs/custom.png"/>
 <img src="https://github.com/railsjazz/peity_vanilla/raw/main/docs/animation.gif"/>
 
-```html
-<span class="updating-chart">5,3,9,6,5,9,7,3,5,2,5,3,9,6,5,9,7,3,5,2</span>
+```erb
+<%= peity_line_chart([5,3,9,6,5,9,7,3,5,2,5,3,9,6,5,9,7,3,5,2], id: 'updating-chart') %>
 
 <script>
-  var updatingChart = peity(document.getElementById("updating-chart"), "line", { width: 64 });
+  var updatingChart = document.getElementById("updating-chart");
   
   setInterval(function() {
     var random = Math.round(Math.random() * 10)
-    var values = updatingChart.element.innerText.split(",")
+    var values = updatingChart.innerText.split(",")
     values.shift()
     values.push(random)
 
-    updatingChart.element.innerText = values.join(",")
-    updatingChart.element.dispatchEvent(new Event('change'))
+    updatingChart.innerText = values.join(",")
   }, 1000);
 </script>
 ```
@@ -132,7 +132,6 @@ You can pass in `options` any of the attributes.
 
 ## TODO
 
-- stimulus, turbo, etc.
 - remote datasource and autoupdate
 
 ## Contributing

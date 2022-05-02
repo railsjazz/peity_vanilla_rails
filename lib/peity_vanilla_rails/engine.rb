@@ -1,14 +1,9 @@
 module PeityVanillaRails
   class Railtie < ::Rails::Engine
-    PRECOMPILE_ASSETS = Dir[root.join("app/assets/javascripts/**/*")]
-    initializer 'peity_vanilla_rails.assets' do |app|
-      if app.config.respond_to?(:assets)
-        app.config.assets.precompile += PRECOMPILE_ASSETS
-      end
-    end
-
+    PRECOMPILE_ASSETS = %w( peity-vanilla-rails.esm.js peity-vanilla.esm.js )
     initializer "peity_vanilla_rails.importmap", before: "importmap" do |app|
       if Rails.application.respond_to?(:importmap)
+        app.config.assets.precompile += PRECOMPILE_ASSETS
         app.config.importmap.paths << root.join("config/importmap.rb")
       end
     end
