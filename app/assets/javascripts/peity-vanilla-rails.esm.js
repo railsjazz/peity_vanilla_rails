@@ -424,7 +424,17 @@ const peity = function (element, type, options) {
 peity.defaults = Peity.defaults;
 peity.graphers = Peity.graphers;
 
-const getPeityType = (node) => node.getAttribute('peity');
+function domReady() {
+  return new Promise((resolve) => {
+    if (document.readyState == "loading") {
+      document.addEventListener("DOMContentLoaded", resolve);
+    } else {
+      resolve();
+    }
+  });
+}
+
+const getPeityType = (node) => node.getAttribute("peity");
 
 const elementFromNode = (node) => {
   if (node.nodeType == Node.ELEMENT_NODE) {
@@ -456,7 +466,7 @@ const processAttributeChanged = (mutation) => {
       }
       break;
     case "data-peity":
-      if(node._peity) {
+      if (node._peity) {
         peity(node, node._peity.type);
       }
       break;
@@ -493,11 +503,17 @@ const observerOptions = {
   subtree: true,
 };
 
-const observer = new MutationObserver(callback);
-observer.observe(document.documentElement, observerOptions);
+const start = async () => {
+  await domReady();
 
-for (const node of Array.from(document.documentElement.querySelectorAll('[peity]'))) {
-  processNodeAdded(node);
-}
+  const observer = new MutationObserver(callback);
+  observer.observe(document.documentElement, observerOptions);
+
+  for (const node of Array.from(document.documentElement.querySelectorAll("[peity]"))) {
+    processNodeAdded(node);
+  }
+};
+
+start();
 
 export { peity as default };
