@@ -1,5 +1,5 @@
 /*!
-  Peity Vanila Rails 0.2.0
+  Peity Vanila Rails 0.2.1
   Copyright © 2022 RailsJazz
   https://railsjazz.com
  */
