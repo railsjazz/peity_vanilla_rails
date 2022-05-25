@@ -434,7 +434,7 @@ function domReady() {
   });
 }
 
-const queryPeityElements = (node) => Array.from(node.querySelectorAll("[peity]"));
+const queryPeityElements = (node) => node.matches("[peity]") ? [node] : Array.from(node.querySelectorAll("[peity]"));
 
 const getPeityType = (node) => node.getAttribute("peity");
 
