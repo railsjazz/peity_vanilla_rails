@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    peity_vanilla_rails (0.2.1)
+    peity_vanilla_rails (0.2.2)
       rails
 
 GEM
@@ -154,7 +154,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
-    strscan (3.0.1)
+    strscan (3.0.3)
     thor (1.2.1)
     timeout (0.2.0)
     tzinfo (2.0.4)
