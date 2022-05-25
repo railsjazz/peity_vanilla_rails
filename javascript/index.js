@@ -10,6 +10,8 @@ function domReady() {
   });
 }
 
+const queryPeityElements = (node) => Array.from(node.querySelectorAll("[peity]"));
+
 const getPeityType = (node) => node.getAttribute("peity");
 
 const elementFromNode = (node) => {
@@ -18,79 +20,107 @@ const elementFromNode = (node) => {
   }
 };
 
-const processNodeAdded = (node) => {
-  if (node.matches("[peity]")) {
-    peity(node, getPeityType(node));
+class Watcher {
+  constructor() {
+    this.elements = new Set();
   }
-};
 
-const processNodeRemoved = (node) => {
-  if (node._peity) {
-    node._peity.destroy();
-  }
-};
+  async start() {
+    await domReady();
 
-const processAttributeChanged = (mutation) => {
-  const node = mutation.target;
-  switch (mutation.attributeName) {
-    case "peity":
-      const type = getPeityType(node);
-      if (type) {
-        peity(node, type);
-      } else {
-        node._peity.unmount();
+    this.element = document.documentElement;
+
+    const observer = new MutationObserver(this.callback.bind(this));
+    observer.observe(this.element, {
+      childList: true,
+      attributes: true,
+      subtree: true,
+    });
+
+    this.processNodeAdded(this.element);
+  };
+
+  processNodeAdded(node) {
+    for (const element of queryPeityElements(node)) {
+      if (!this.elements.has(element)) {
+        this.elements.add(element)
+        peity(element, getPeityType(element));
       }
-      break;
-    case "data-peity":
-      if (node._peity) {
-        peity(node, node._peity.type);
-      }
-      break;
-  }
-};
+    }
+  };
 
-const callback = (mutationList, observer) => {
-  mutationList.forEach(function (mutation) {
-    switch (mutation.type) {
-      case "childList":
-        for (const node of Array.from(mutation.addedNodes)) {
-          const element = elementFromNode(node);
-          if (element) {
-            processNodeAdded(element);
-          }
+  processNodeRemoved(node) {
+    const matches = new Set(queryPeityElements(node));
+
+    for (const element of this.elements) {
+      if(matches.has(element)) {
+        this.elements.delete(element);
+        if (element._peity) {
+          element._peity.destroy();
         }
-        for (const node of Array.from(mutation.removedNodes)) {
-          const element = elementFromNode(node);
-          if (element) {
-            processNodeRemoved(element);
+      }
+    }
+  };
+
+  processAttributeChanged(mutation) {
+    const node = mutation.target;
+    if(!this.elementIsActive(node)) return;
+
+    switch (mutation.attributeName) {
+      case "peity":
+        const type = getPeityType(node);
+        if (type) {
+          if (!this.elements.has(node)) {
+            this.elements.add(node)
+          }
+          peity(node, type);
+        } else {
+          if (this.elements.has(node)) {
+            this.elements.delete(node);
+            if (node._peity) {
+              node._peity.destroy();
+            }
           }
         }
         break;
-      case "attributes":
-        processAttributeChanged(mutation);
+      case "data-peity":
+        if (node._peity) {
+          peity(node, node._peity.type);
+        }
         break;
     }
-  });
-};
-
-const observerOptions = {
-  childList: true,
-  attributes: true,
-  subtree: true,
-};
-
-const start = async () => {
-  await domReady();
-
-  const observer = new MutationObserver(callback);
-  observer.observe(document.documentElement, observerOptions);
-
-  for (const node of Array.from(document.documentElement.querySelectorAll("[peity]"))) {
-    processNodeAdded(node);
   }
-};
 
-start();
+  callback(mutationList, observer) {
+    mutationList.forEach((mutation) => {
+      switch (mutation.type) {
+        case "childList":
+          for (const node of Array.from(mutation.removedNodes)) {
+            const element = elementFromNode(node);
+            if (element) {
+              this.processNodeRemoved(element);
+            }
+          }
+          for (const node of Array.from(mutation.addedNodes)) {
+            const element = elementFromNode(node);
+            if (element && this.elementIsActive(element)) {
+              this.processNodeAdded(element);
+            }
+          }
+          break;
+        case "attributes":
+          this.processAttributeChanged(mutation);
+          break;
+      }
+    });
+  };
+
+  elementIsActive(element) {
+    return this.element.contains(element);
+  }
+}
+
+new Watcher().start();
 
 export * from "peity-vanilla";
 export default peity;
