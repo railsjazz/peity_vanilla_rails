@@ -137,6 +137,9 @@ You can pass in `options` any of the attributes.
 
 ## Contributing
 
+[<img src="https://opensource-heroes.com/svg/embed/railsjazz/peity_vanilla_rails"
+/>](https://opensource-heroes.com/r/railsjazz/peity_vanilla_rails)
+
 You are welcome to contribute.
 
 ## License
