@@ -1,7 +1,8 @@
 # Peity Vanilla Rails
 
 [![RailsJazz](https://github.com/igorkasyanchuk/rails_time_travel/blob/main/docs/my_other.svg?raw=true)](https://www.railsjazz.com)
-[![Listed on OpenSource-Heroes.com](https://opensource-heroes.com/badge-v1.svg)](https://opensource-heroes.com/r/railsjazz/peity_vanilla_rails)
+
+[!["Buy Me A Coffee"](https://github.com/igorkasyanchuk/get-smart/blob/main/docs/snapshot-bmc-button-small.png?raw=true)](https://buymeacoffee.com/igorkasyanchuk)
 
 Sparklines are small but intense charts. This gem is a wrapper around [peity-vanilla](https://github.com/railsjazz/peity_vanilla) library. You can generate simple but informative charts with vanilla JS.
 
@@ -137,9 +138,6 @@ You can pass in `options` any of the attributes.
 
 ## Contributing
 
-[<img src="https://opensource-heroes.com/svg/embed/railsjazz/peity_vanilla_rails"
-/>](https://opensource-heroes.com/r/railsjazz/peity_vanilla_rails)
-
 You are welcome to contribute.
 
 ## License
@@ -149,3 +147,5 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 [<img src="https://github.com/igorkasyanchuk/rails_time_travel/blob/main/docs/more_gems.png?raw=true"
 />](https://www.railsjazz.com/?utm_source=github&utm_medium=bottom&utm_campaign=peity_vanilla_rails)
+
+[!["Buy Me A Coffee"](https://github.com/igorkasyanchuk/get-smart/blob/main/docs/snapshot-bmc-button.png?raw=true)](https://buymeacoffee.com/igorkasyanchuk)
