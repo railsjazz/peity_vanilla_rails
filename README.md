@@ -2,11 +2,8 @@
 
 [![RailsJazz](https://github.com/igorkasyanchuk/rails_time_travel/blob/main/docs/my_other.svg?raw=true)](https://www.railsjazz.com)
 
-<a href="https://igorkasyanchuk.com/apps?ref=peity_vanilla_rails">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://igorkasyanchuk.com/versions/v1/banner-dark.svg">
-    <img src="https://igorkasyanchuk.com/versions/v1/banner-light.svg" width="720" alt="More tools from the author: Laki, DiffNotes and more. See all projects at igorkasyanchuk.com/apps">
-  </picture>
+<a href="https://www.igorkasyanchuk.com/visit/laki?ref=peity_vanilla_rails">
+  <img src="https://www.igorkasyanchuk.com/versions/v2/laki-banner.gif" width="720" alt="Laki: run a team of AI coding agents. Lose track of none. Free at laki.sh">
 </a>
 
 Sparklines are small but intense charts. This gem is a wrapper around [peity-vanilla](https://github.com/railsjazz/peity_vanilla) library. You can generate simple but informative charts with vanilla JS.
